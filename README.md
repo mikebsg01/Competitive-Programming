@@ -1,5 +1,5 @@
-# Contests-Online
-Repositorio con variedad de soluciones (códigos, estructuras de datos y algoritmos) de distintos jurados en linea.
+# Programming-Contests
+Repositorio con soluciones de problemas de concursos (códigos, estructuras de datos y algoritmos) de los distintos jurados en linea.
 
 =============================================================================
 
