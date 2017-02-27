@@ -3,7 +3,6 @@
 #define MAXN 101
 using namespace std;
 
-int N, M;
 int dp[MAXN][MAXN];
 
 void pascal() {
