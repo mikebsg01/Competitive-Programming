@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define optimize_ios ios_base::sync_with_stdio(0);cin.tie(0);
 #define MAXN 100002
 #define X first
 #define Y second
@@ -7,43 +8,40 @@
 #define INF -1
 using namespace std;
 typedef pair<int, int> P;
+typedef pair<P, int> T;
 
 int N, M, K;
-vector<P> E[MAXN];
-vector<int> S;
+T E[MAXN];
 bool isStorage[MAXN];
 int ans = -1;
 
 int main() {
+	optimize_ios
+
 	int i, j, u, v, l, n;
 
 	cin >> N >> M >> K;
 
 	for (i = 0; i < M; ++i) {
 		cin >> u >> v >> l;
-		E[u].PB(MP(v, l));
-		E[v].PB(MP(u, l));
+		E[i].X.X = u;
+		E[i].X.Y = v;
+		E[i].Y = l;
 	}
 
 	for (i = 0; i < K; ++i) {
 		cin >> u;
-
-		S.PB(u);
 		isStorage[u] = true;
 	}
 
-	for (i = 0; i < K; ++i) {
-		n = E[S[i]].size();
-
-		for (j = 0; j < n; ++j) {
-			if (!isStorage[E[S[i]][j].X]) {
+	for (i = 0; i < M; ++i) {
+		if (isStorage[E[i].X.X] ^ isStorage[E[i].X.Y]) {
 				if (ans == INF) {
-					ans = E[S[i]][j].Y;
+					ans = E[i].Y;
 					continue;
 				}
 
-				ans = min(ans, E[S[i]][j].Y);
-			}
+				ans = min(ans, E[i].Y);
 		}
 	}
 
