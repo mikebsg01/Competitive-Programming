@@ -15,22 +15,22 @@ typedef long long int lli;
 typedef unsigned long long int ulli;
 typedef vector<int> vectori;
 typedef vector<lli> vectorlli;
-typedef pair<int, int> Pair;
+typedef pair<lli, int> Pair;
 typedef pair<Pair, Pair> Quart;
 typedef vector<Pair> vectorPair;
 typedef map<int, int> mapi;
 
 int N;
 vectorPair A;
-int sum;
+lli sum;
 vectori ans;
 
 struct cmp {
-	bool operator()(const Pair& a, const int& x) {
+	bool operator()(const Pair& a, const lli& x) {
 		return a.X < x;
 	}
 
-	bool operator()(const int& x, const Pair& a) {
+	bool operator()(const lli& x, const Pair& a) {
 		return x < a.X;
 	}
 };
@@ -49,7 +49,8 @@ int upper(int x) {
 
 int main() {
 	optimize_io
-	int i, x, t, n, a, b;
+	int i, n, a, b;
+	lli t, x;
 	cin >> N;
 
 	for (i = 0; i < N; ++i) {
@@ -69,7 +70,7 @@ int main() {
 			b = upper(x);
 			n = b - a;
 
-			if (n > 0 and !(n == 1 and x == A[i].X)) {
+			if (n > 0 and a < N and A[a].X == x and !(n == 1 and x == A[i].X)) {
 				PB(ans, A[i].Y);
 			}
 		}
