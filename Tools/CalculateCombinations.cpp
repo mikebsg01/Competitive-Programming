@@ -4,8 +4,8 @@ using namespace std;
 int calc(int n) {
   int sum = n, i;
 
-  if (i == 1) {
-    return 1;
+  if (n == 1) {
+  	return 1;
   }
   
   for (i = n; i >= 1; --i) {
