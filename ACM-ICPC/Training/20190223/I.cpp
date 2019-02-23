@@ -40,12 +40,21 @@ vectorlli A;
 vectorPair B;
 
 lli frec(lli x) {
-	lli f = 0;
-	FOR(i, 0, N) {
-		if (binary_search(ALL(A), x - A[i]) {
-			++f;
+	int idx = upper_bound(ALL(A), x) - A.begin(), i = 0, j = idx - 1;
+	lli sum, f = 0;
+
+	while (i < j) {
+		sum = A[i] + A[j];
+
+		if (sum == x) {
+			++i; --j; ++f;
+		} else if (sum < x) {
+			++i;
+		} else {
+			--j;
 		}
 	}
+
 	return f;
 }
 
@@ -57,7 +66,6 @@ int main() {
 	FOR(i, 0, N) {
 		cin >> x;
 		PB(A, x);
-		M[x] = 1;
 	}
 
 	sort(ALL(A));
