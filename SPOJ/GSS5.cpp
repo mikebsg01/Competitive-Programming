@@ -44,13 +44,9 @@ Node merge(Node& lc, Node& rc) {
 	parent.prefixSum = max(lc.prefixSum, lc.sum + rc.prefixSum);
 	parent.suffixSum = max(rc.suffixSum, lc.suffixSum + rc.sum);
 	
-	parent.maxSum = max(parent.prefixSum,
-						max(parent.suffixSum,
-							max(lc.maxSum,
-								max(rc.maxSum,
-									lc.suffixSum + rc.prefixSum
-								)
-							)
+	parent.maxSum = max(lc.maxSum,
+						max(rc.maxSum,
+							lc.suffixSum + rc.prefixSum
 						)
 					);
 
@@ -125,12 +121,8 @@ int main() {
 				cout << q(x1, y1).suffixSum + q(y1 + 1, x2 - 1).sum + q(x2, y2).prefixSum << '\n';
 			} else {
 				cout << max(q(x2, y1).maxSum,
-							max(q(x1, y1).suffixSum,
-								max(q(x2, y2).prefixSum,
-									max(q(x1, x2 - 1).suffixSum + q(x2, y2).prefixSum,
-										q(x1, y1).suffixSum + q(y1 + 1, y2).prefixSum
-									)
-								)
+							max(q(x1, x2 - 1).suffixSum + q(x2, y2).prefixSum,
+								q(x1, y1).suffixSum + q(y1 + 1, y2).prefixSum
 							)
 						) << '\n';
 			}
