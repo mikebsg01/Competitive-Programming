@@ -73,17 +73,13 @@ void toposort() {
 }
 
 lli dijkstra(int start) {
-    int u;    
-    memset(dist, INF, sizeof(dist));
-    dist[start] = 0;
+    int u;
 
     RFOR(int, i, N - 1, -1) {
         u = T[i];
 
-        if (dist[u] != INF) {
-            FOR(int, j, 0, E[u].SZ) {
-                dist[E[u][j].X] = max(dist[E[u][j].X], dist[u] + E[u][j].Y);
-            }
+        FOR(int, j, 0, E[u].SZ) {
+            dist[E[u][j].X] = max(dist[E[u][j].X], dist[u] + E[u][j].Y);
         }
     }
 
