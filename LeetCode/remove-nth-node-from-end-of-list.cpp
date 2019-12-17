@@ -8,22 +8,22 @@
  */
 class Solution {
 public:
-    int traverse(ListNode* current, int n, int level) {
+    void traverse(ListNode* current, int& n, int& sz) {
         if (current == NULL) {
-            return 0;
+            return;
         }
 
-        int idx = 1 + traverse(current->next, n, level + 1);
+        traverse(current->next, n, sz);
+        ++sz;
         
-        if ((idx - 1) == n) {
+        if ((sz - 1) == n) {
             current->next = current->next->next;
         }
-        
-        return idx;
     }
 
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        int sz = traverse(head, n, 1);
+        int sz = 0;
+        traverse(head, n, sz);
         return sz == n ? head->next : head;
     }
 };
