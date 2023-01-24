@@ -34,7 +34,7 @@ def main():
         a -= maxJokes
         moodB -= maxJokes
         moodA += maxJokes
-      elif moodA > 0 and moodB > 0 and x > 0:
+      elif x > 0 and moodA > 0 and moodB > 0:
         maxJokes = min(min(moodA, moodB), x)
         x -= maxJokes
         moodA -= maxJokes
@@ -43,6 +43,8 @@ def main():
         maxJokes = 1
         moodA -= maxJokes
         moodB -= maxJokes
+        ans += maxJokes
+        break
       ans += maxJokes
     print(ans)
 
